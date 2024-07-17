@@ -20,13 +20,16 @@ docker run -d -p 5000:5000 --network twotier -e MYSQL_HOST=mysql -e MYSQL_USER=a
 docker run -d -p 3360:3306 --network twotier -e MYSQL_DATABASE=myDb -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin -e MYSQL_ROOT_PASSWORD=admin --name=mysql bhushan525/mysql:5.7
 
 docker inspect network twotier
-docker exec -it mysql
+docker exec -it mysql bash
+mysql -u root -p
+
+show databases;
+user myDb;
+
 CREATE TABLE messages (
     id INT AUTO_INCREMENT PRIMARY KEY,
     message TEXT
 );
-show databases;
-user myDb;
 
 select * from messages;
 open ec2 public ip with port 5000 and add message
